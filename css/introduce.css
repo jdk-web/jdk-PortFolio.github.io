@@ -1,172 +1,106 @@
-#particles-js {
-  position: absolute;
-  width: 100%;
-  height: 100%;
+<style>
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,300,400');
+.body {
+  margin:0px;
+  text-align:center;
+ /* padding-top:33vh;*/
+  color:#fff;
+  font-family:'Roboto';
+  font-size:36px;
+  font-weight:100;
+  overflow:hidden;
+  /*animation:bg 5s linear infinite;*/
 }
 
-body {
-  background: #97cfca;
-  overflow: hidden;
-}
-
-.terminal-window {
-  text-align: left;
-  width: 37.5rem;
-  height: 22.5rem;
-  border-radius: .625rem;
-  margin: auto;
-  position: relative;
-  top: 10.5rem;
-}
-
-.terminal-window header {
-  background: #E0E8F0;
-  height: 1.875rem;
-  border-radius: .5rem .5rem 0 0;
-  padding-left: .625rem;
-}
-
-.terminal-window header .button {
-  width: .75rem;
-  height: .75rem;
-  margin: .625rem .25rem 0 0;
+.dropping-texts {
   display: inline-block;
-  border-radius: .5rem;
-}
-
-.terminal-window header .button.green {
-  background: #3BB662;
-}
-
-.terminal-window header .button.yellow {
-  background: #E5C30F;
-}
-
-.terminal-window header .button.red {
-  background: #E75448;
-}
-
-.terminal-window section.terminal {
-  color: white;
-  font-family: Menlo, Monaco, "Consolas", "Courier New", "Courier";
-  font-size: 11pt;
-  background: #30353A;
-  padding: .625rem;
-  box-sizing: border-box;
-  position: absolute;
-  width: 100%;
-  top: 1.875rem;
-  bottom: 0;
-  overflow: auto;
-}
-
-.terminal-window section.terminal .typed-cursor {
-    opacity: 1;
-    -webkit-animation: blink 0.7s infinite;
-    -moz-animation: blink 0.7s infinite;
-    animation: blink 0.7s infinite;
-}
-@keyframes blink{
-    0% { opacity:1; }
-    50% { opacity:0; }
-    100% { opacity:1; }
-}
-@-webkit-keyframes blink{
-    0% { opacity:1; }
-    50% { opacity:0; }
-    100% { opacity:1; }
-}
-@-moz-keyframes blink{
-    0% { opacity:1; }
-    50% { opacity:0; }
-    100% { opacity:1; }
-}
-
-.terminal-data { display: none; }
-.terminal-window .gray { color: gray; }
-.terminal-window .green { color: green;}
-
-/*Media for mobile responsive viewing*/
-@media only screen and (max-width: 600px) {
-.terminal-window {
+  width: 450px;
   text-align: left;
-  width: 37.5vmin;
-  height: 22.5vmin;
-  border-radius: .625vmin;
-  margin: auto;
-  position: relative;
-  top: 30.5vmin;
-}
-}
-@media only screen and (max-width: 600px) {
-.terminal-window header {
-  background: #E0E8F0;
-  height: 1.875vmin;
-  border-radius: .5vmin .5vmin 0 0;
-  padding-left: 1vmin;
-}
-}
-@media only screen and (max-width: 600px) {
-.terminal-window header .button {
-  width: .75vmin;
-  height: .75vmin;
-  margin: .625vmin .25vmin 0 0;
-  display: inline-block;
-  border-radius: .5vmin;
-}
-}
-@media only screen and (max-width: 600px) {
-.terminal-window header .button.green {
-  background: #3BB662;
-}
-}
-@media only screen and (max-width: 600px) {
-.terminal-window header .button.yellow {
-  background: #E5C30F;
-}
-}
-@media only screen and (max-width: 600px) {
-.terminal-window header .button.red {
-  background: #E75448;
-}
-}
-@media only screen and (max-width: 600px) {
-.terminal-window section.terminal {
-  color: white;
-  font-family: Menlo, Monaco, "Consolas", "Courier New", "Courier";
-  font-size: .6875vmin;
-  background: #30353A;
-  padding: .625vmin;
-  box-sizing: border-box;
-  position: absolute;
-  width: 100%;
-  top: 1.875vmin;
-  bottom: 0;
-  overflow: auto;
-}
-}
-.terminal-window section.terminal .typed-cursor {
-    opacity: 1;
-    -webkit-animation: blink 0.7s infinite;
-    -moz-animation: blink 0.7s infinite;
-    animation: blink 0.7s infinite;
-}
-@keyframes blink{
-    0% { opacity:1; }
-    50% { opacity:0; }
-    100% { opacity:1; }
-}
-@-webkit-keyframes blink{
-    0% { opacity:1; }
-    50% { opacity:0; }
-    100% { opacity:1; }
-}
-@-moz-keyframes blink{
-    0% { opacity:1; }
-    50% { opacity:0; }
-    100% { opacity:1; }
+  height: 66px;
+  vertical-align: -2px;
 }
 
-.terminal-data { display: none; }
-.terminal-window .gray { color: gray; }
-.terminal-window .green { color: green;}
+.dropping-texts > div {
+  font-size:0px;
+  opacity:0;
+  margin-left:-30px;
+  position:absolute;
+  font-weight:300;   
+  box-shadow: 0px 60px 25px -20px rgba(0,0,0,0.5);
+}
+
+.dropping-texts > div:nth-child(1) {
+  animation: roll 10s linear infinite 2s;
+}
+.dropping-texts > div:nth-child(2) {
+  animation: roll 10s linear infinite 4s;
+}
+.dropping-texts > div:nth-child(3) {
+  animation: roll 10s linear infinite 6s;
+}
+.dropping-texts > div:nth-child(4) {
+  animation: roll2 10s linear infinite 8s;
+}
+
+@keyframes roll {
+  0% {
+    font-size:0px;
+    opacity:0;
+    margin-left:-30px;
+    margin-top:0px;
+    transform: rotate(-25deg);
+  }
+  3% {
+    opacity:1;
+    transform: rotate(0deg);
+  }
+  5% {
+    font-size:inherit;
+    opacity:1;
+    margin-left:0px;
+    margin-top:0px;
+  }
+  20% {
+    font-size:inherit;
+    opacity:1;
+    margin-left:0px;
+    margin-top:0px;
+    transform: rotate(0deg);
+  }
+  27% {
+    font-size:0px;
+    opacity:0.5;
+    margin-left:20px;
+    margin-top:100px;
+  }
+  100% {
+    font-size:0px;
+    opacity:0;
+    margin-left:-30px;
+    margin-top:0px;
+    transform: rotate(15deg);
+  }
+}
+
+@keyframes roll2 {
+  0% {
+    font-size:0px;
+    opacity:0;
+    margin-left:-30px;
+    margin-top:0px;
+    transform: rotate(-25deg);
+  }
+  100% {
+    font-size:0px;
+    opacity:0;
+    margin-left:-30px;
+    margin-top:0px;
+    transform: rotate(15deg);
+  }
+}
+
+@keyframes bg {
+0% {background: #000000;}
+  100% {background: #000000;}
+}
+</style>
